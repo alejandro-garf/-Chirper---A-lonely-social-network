@@ -1,13 +1,10 @@
-// Please fill in below.
-// <Your name>
-// <Your section number> (e.g. CPSC 121L-01)
-// <Date>
-// <Your csu.fullerton.edu email>
-// <Your GitHub username>
+// Alejandro Fonseca
+// CPSC 121L-06
+// 10-12-23
+// gfoncsu.fullerton.edu email>
+// alejandro-garf
 //
-// Lab 8-1
-// If it is a pair programming lab please specify partner below.
-// Partner: @peteranteater
+// Lab 7-1
 
 // ======================= YOUR CODE HERE =======================
 // Write the Bubble class here, containing one member variable,
@@ -22,7 +19,17 @@
 // as const, by writing `const` after the parameter list.
 // ===============================================================
 class Bubble {
+ public:
+  double GetRadius() const { return radius_; }
+  void SetRadius(double radius) { radius_ = radius; }
+  // Volume of a sphere is 4/3 * r * r * r;
+  double CalculateVolume() const {
+    double volume = (4.0 / 3.0) * 3.1415 * radius_ * radius_ * radius_;
+    return volume;
+  }
 
+ private:
+  double radius_;
 };
 
 // ========================= YOUR CODE HERE =========================
@@ -32,3 +39,4 @@ class Bubble {
 // 2. Consider if the inputs passed in should be modified. If not,
 //    please mark them const.
 // ===================================================================
+Bubble CombineBubbles(const Bubble& bubble1, Bubble& bubble2);

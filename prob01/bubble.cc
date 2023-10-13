@@ -1,13 +1,10 @@
-// Please fill in below.
-// <Your name>
-// <Your section number> (e.g. CPSC 121L-01)
-// <Date>
-// <Your csu.fullerton.edu email>
-// <Your GitHub username>
+// Alejandro Fonseca
+// CPSC 121L-06
+// 10-12-23
+// gfoncsu.fullerton.edu email>
+// alejandro-garf
 //
-// Lab 8-1
-// If it is a pair programming lab please specify partner below.
-// Partner: @peteranteater
+// Lab 7-1
 
 #include "bubble.h"
 // ========================= YOUR CODE HERE =========================
@@ -31,3 +28,8 @@
 // Since CombineBubbles is NOT in the Bubble class, you should not
 // specify the name of the class with the :: format.
 // ===================================================================
+Bubble CombineBubbles(const Bubble& bubble1, Bubble& bubble2) {
+  Bubble combined_bubble{};
+  combined_bubble.SetRadius(bubble1.GetRadius() + bubble2.GetRadius());
+  return combined_bubble;
+}
