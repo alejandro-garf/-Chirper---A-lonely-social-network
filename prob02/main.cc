@@ -16,52 +16,47 @@
 #include "chirp.h"
 
 int main() {
+  std::vector<Chirp> chirps;
   std::string input;
-  const std::string prompt =
-      "\nYou can \"chirp\" a new message to Chirper, "
-      "\"like\" an existing chirp, or \"exit\". What do you want to do? ";
-  std::cout << prompt;
-  std::getline(std::cin, input);
 
-  // ============= YOUR CODE HERE =============
-  // 1. Create a vector to hold your chirps.
-  //    Don't forget to #include <vector> and
-  //    the header file for the Chirp class.
-  // ==========================================
+  std::cout << "You can \"chirp\" a new message to Chirper, or \"like\" an "
+               "existing chirp, or \"exit\". What do you want to do? ";
 
   while (input != "exit") {
+    std::getline(std::cin, input);
+
     if (input == "chirp") {
       std::string user_message;
       std::cout << "What's your message? ";
       std::getline(std::cin, user_message);
 
-      // =================== YOUR CODE HERE ===================
-      // 2. Create a new Chirp object and set the message to
-      //    user_message. Add the new chirp to the vector.
-      // ======================================================
-
+      // Create a new Chirp object and add it to the vector.
+      chirps.emplace_back(Chirp(user_message));
     } else if (input == "like") {
       std::string user_index_string;
       std::cout << "Which index do you want to like? ";
       std::getline(std::cin, user_index_string);
       int user_index = std::stoi(user_index_string);
 
-      // =================== YOUR CODE HERE ===================
-      // 3. Add a like to the Chirp object at index user_index
-      //    in the vector. You will need to offset user_index
-      //    to the zero-based indexing that matches your vector.
-      // ======================================================
+      if (user_index > 0 && user_index <= chirps.size()) {
+        chirps[user_index - 1].AddLike();
+      }
     }
 
-    // ===================== YOUR CODE HERE =====================
-    // 4. Print the contents of the chirp vector. You will need
-    //    to loop through the entries in the vector.
-    //    Check your formatting matches the README:
-    //    Show the user indices starting at 1 instead of 0,
-    //    and include the number of likes.
-    // ==========================================================
-    std::cout << prompt;
-    std::getline(std::cin, input);
+    // Print the list of chirps.
+    std::cout << "Chirper has " << chirps.size() << " chirp";
+    if (chirps.size() != 1) {
+      std::cout << "s";
+    }
+    std::cout << ":" << std::endl;
+
+    for (size_t i = 0; i < chirps.size(); i++) {
+      std::cout << i + 1 << ". " << chirps[i].GetMessage() << " ("
+                << chirps[i].GetLikes() << " likes)" << std::endl;
+    }
   }
+
+  std::cout << "Goodbye!" << std::endl;
+
   return 0;
 }

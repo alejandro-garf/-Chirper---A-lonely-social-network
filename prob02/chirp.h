@@ -36,3 +36,20 @@
 // Note: mark functions that do not modify the member variables
 // as const, by writing `const` after the parameter list.
 // ===============================================================
+class Chirp {
+ public:
+  Chirp();                            // Default constructor
+  Chirp(const std::string& message);  // Constructor with a message
+  Chirp(const std::string& message,
+        int likes);  // Constructor with a message and likes
+
+  void SetMessage(const std::string& message);
+  std::string GetMessage() const;
+  int GetLikes() const;
+  void AddLike();
+  void AddLike(int count);
+
+ private:
+  std::string message_;
+  int likes_;
+};
